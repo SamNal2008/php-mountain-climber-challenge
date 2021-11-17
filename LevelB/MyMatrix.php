@@ -83,8 +83,33 @@ class MyMatrix
      */
     public function fillZero()
     {
-        /** @TODO */
+        $toFill = array();
+        for ($i = 0; $i < $this->iMax; ++$i) {
+            for ($j = 0; $j < $this->jMax; ++$j) {
+                if ($this->matrix[$i][$j] == 0) {
+                    array_push($toFill, [$i, $j]);
+                }
+            }
+        }
+
+        foreach ($toFill as $square) {
+            $this->fillZeroAux($square[1], $square[0]);
+        }
 
         return $this;
+    }
+
+    /**
+     * This function fills a column (x) and a line (y) with '0'
+     */
+    private function fillZeroAux(int $x, int $y)
+    {
+        for ($i = 0; $i < $this->iMax; ++$i) {
+            $this->matrix[$i][$x] = 0;
+        }
+
+        for ($j = 0; $j < $this->jMax; ++$j) {
+            $this->matrix[$y][$j] = 0;
+        }
     }
 }

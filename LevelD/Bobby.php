@@ -14,7 +14,7 @@ class Bobby
     }
 
     /**
-     * @TODO
+     * Check if Bobby can pay and if yes remove the money he paid
      *
      * @param $price
      *
@@ -22,9 +22,40 @@ class Bobby
      */
     public function giveMoney($price)
     {
-        /** @TODO */
+        if ($price > $this->total) {
+            return false;
+        }
+        $sum = 0;
+        $ordered_wallet = rsort($this->wallet);
+        $closest = 0;
+        foreach($this->wallet as $element) {
+            if ($sum >= $price) {
+                break;
+            }
+            if (is_numeric($element)) {
+                if ($element === $this->findBestBill($price - $sum)) {
+                    $index = array_search($element, $this->wallet);
+                    array_splice($this->wallet, $index, 1);
+                }
+            }
+            if ($sum >= $price) {
+                break;
+            }
+        }
+        $this->computeTotal();
+        return true;
+    }
 
-        return false;
+    private function findBestBill($moneyLeft) {
+        $min = 1000;
+        foreach($this->wallet as $element) {
+            if (is_numeric($element)) {
+                if (($moneyLeft - $element) < $min) {
+                    $min = $element;
+                } 
+            }
+        }
+        return $min;
     }
 
     /**

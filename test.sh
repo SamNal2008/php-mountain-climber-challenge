@@ -22,7 +22,7 @@ fi
 ./phpunit LevelD;
 LEVELD=$?;
 if [ $LEVELD = 0 ]; then
-        SCORE=$((SCORE+30));
+         SCORE=$((SCORE+30));
 fi
 
 ./phpunit LevelE;

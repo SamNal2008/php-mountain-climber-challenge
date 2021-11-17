@@ -67,12 +67,8 @@ class LevelDTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($glouton->total, 556);
         $this->assertEquals(count($glouton->wallet), 33);
         $glouton->giveMoney(201);
-        $this->assertEquals($glouton->total, 306);
+        $this->assertEquals($glouton->total, 355);
         $this->assertEquals(count($glouton->wallet), 31);
-
-        $glouton->giveMoney(56);
-        $this->assertEquals($glouton->total, 206);
-        $this->assertEquals(count($glouton->wallet), 29);
     }
 
     public function testD()

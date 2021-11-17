@@ -76,8 +76,6 @@ class MyBinaryTreeInArray
         if (!$this->nodeExist($index)) {
             return $index;
         }
-
-        $res = false;
         
         if ($value < $this->tree[$index]) {
             return $this->course($this->getLeftIndex($index), $value);

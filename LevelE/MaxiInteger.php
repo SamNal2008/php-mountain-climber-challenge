@@ -27,13 +27,13 @@ class MaxiInteger
         /**
          * You can delete this part of the code
          */
-        $maxLength = max(strlen($this->getValue()), strlen($other->getValue()));
-        if ($maxLength) {
-            $other = $other->fillWithZero($maxLength);
-            $this->setValue($this->fillWithZero($maxLength)->getValue());
-        }
+        // $maxLength = max(strlen($this->getValue()), strlen($other->getValue()));
+        // if ($maxLength) {
+        //     $other = $other->fillWithZero($maxLength);
+        //     $this->setValue($this->fillWithZero($maxLength)->getValue());
+        // }
 
-        return $this->realSum($this, $other);
+         return $this->realSum($this, $other);
     }
 
     /**
@@ -45,7 +45,9 @@ class MaxiInteger
      */
     private function realSum($a, $b)
     {
-        /** @TODO */
+        $one = doubleval($a->getValue());
+        $second = doubleval($b->getValue());
+        return new MaxiInteger($one + $second);
     }
 
     private function setValue($value)

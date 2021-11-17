@@ -107,13 +107,16 @@ class MyList
     }
 
     /**
-     * @TODO
+     * Iter over the head to find the value
      * @param $value
      *@return null|Element
      */
     public function getFirstElementByValue($value)
     {
-        /** @TODO */
-        return $this;
+        $copy = $this->head;
+        while($copy && $copy->getValue() != $value) {
+            $copy = $copy->getNext();
+        }
+        return $copy;
     }
 }
